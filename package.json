@@ -1,0 +1,24 @@
+{
+  "name": "devserver",
+  "version": "0.0.0",
+  "description": "Express server for web development. Stream coffee & stylus.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mathieucivel/devserver.git"
+  },
+  "keywords": [
+    "ExpressJS",
+    "CoffeeScript",
+    "Stylus"
+  ],
+  "author": "Mathieu Civel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mathieucivel/devserver/issues"
+  },
+  "homepage": "https://github.com/mathieucivel/devserver"
+}
