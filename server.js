@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+/*!
+ * DevServer
+ * Copyright (c) 2014 Mathieu Civel <mathieu@civel.eu>
+ * MIT Licensed
+ */
+
 var path        = require('path');
 var program     = require('commander');
 var express     = require('express');
