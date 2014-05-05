@@ -29,7 +29,6 @@ No npm package yet
 
 ## TODO
 
-- stylus middleware
 - cache js & css compiled files based on modification time
 - no need to use Express right ? switch to connect
 - check liveReload port in case of multiple instances

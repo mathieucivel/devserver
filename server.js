@@ -13,6 +13,7 @@ var tinylr      = require('tiny-lr');
 var Gaze        = require('gaze').Gaze;
 var livereload  = require('connect-livereload');
 var coffeemw    = require('./lib/coffee-middleware');
+var stylusmw    = require('./lib/stylus-middleware');
 
 program
   .version('0.0.1')
@@ -65,6 +66,9 @@ app.use(livereload({
 
 //coffeescript
 app.use(coffeemw());
+
+//stylus
+app.use(stylusmw());
 
 //static
 app.use(express.static(root));
