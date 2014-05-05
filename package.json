@@ -31,6 +31,7 @@
     "gaze": "^0.6.4",
     "coffee-script": "^1.7.1",
     "stylus": "^0.44.0",
-    "string.prototype.endswith": "^0.2.0"
+    "string.prototype.endswith": "^0.2.0",
+    "colors": "^0.6.2"
   }
 }
