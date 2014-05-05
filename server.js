@@ -6,7 +6,7 @@ var express     = require('express');
 var tinylr      = require('tiny-lr');
 var Gaze        = require('gaze').Gaze;
 var livereload  = require('connect-livereload');
-var servestatic = require('serve-static');
+var coffeemw    = require('./lib/coffee-middleware');
 
 program
   .version('0.0.1')
@@ -17,18 +17,18 @@ program
 
 
 port    = program.port || 8000;
-lr_port = program.livereload || 35729
 root    = program.root || '';
+lr_port = program.livereload || 35729
 root    = path.resolve(process.cwd(), root);
 
 app = express();
 
-// livereload server
+//livereload server
 lr = tinylr();
 lr.listen(lr_port);
 console.log('[devserver] Started LiveReload server on port ' + lr_port);
 
-// watch files
+//watch files
 var gaze = new Gaze();
 gaze.on('error', function(error) {
   console.log('[devserver] Error in watching files', error);
@@ -46,20 +46,28 @@ gaze.on('all', function(event, filepath) {
 });
 gaze.add('**/*');
 
-// simple logger
+//simple logger
 app.use(function(req, res, next){
   console.log('[devserver] %s %s', req.method, req.url);
   next();
 });
 
-// livereload
+//livereload
 app.use(livereload({
   port : lr_port
 }));
 
-// static
-//app.use(servestatic(root));
+//coffeescript
+app.use(coffeemw());
+
+//static
 app.use(express.static(root));
+
+//error handler
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.send(500, 'Something broke!');
+});
 
 
 

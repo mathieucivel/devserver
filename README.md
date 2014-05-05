@@ -1,7 +1,7 @@
 # ExpressJS Dev Server
 
 Local development server with LiveReload support that stream compile
-CoffeeScript, Stylus and Jade.
+CoffeeScript and Stylus.
 
 The aim is to quickly serve any small client-side project from any directory
 without grunt/gulp config.
@@ -14,3 +14,8 @@ without grunt/gulp config.
 ## Installation
 
 ## Usage
+
+
+## TODO
+- check liveReload port in case of multiple instances
+- error management
