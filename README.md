@@ -26,12 +26,12 @@ No npm package yet
     devserver
 
 
-
 ## TODO
 
 - cache js & css compiled files based on modification time
 - no need to use Express right ? switch to connect
 - check liveReload port in case of multiple instances
 - less / sass support
+- proxy feature
 - better error management
 - move bin in bin/
