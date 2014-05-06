@@ -52,7 +52,10 @@ gaze.on('all', function(event, filepath) {
     }
   });
 });
-gaze.add('**/*');
+gaze.add('**/*.*');
+gaze.remove('vendor');
+gaze.remove('node_modules');
+gaze.remove('bower_components');
 
 //simple logger
 app.use(function(req, res, next){
