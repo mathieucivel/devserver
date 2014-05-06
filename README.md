@@ -1,6 +1,4 @@
-# ExpressJS Dev Server
-
-#-- WIP --
+# Dev Server -- WIP --
 
 Local development server with LiveReload support that stream compile CoffeeScript and Stylus.
 
@@ -29,6 +27,7 @@ No npm package yet
 ## TODO
 
 - no need to use Express right ? switch to connect
+- tests
 - check liveReload port in case of multiple instances
 - less / sass support
 - proxy feature
