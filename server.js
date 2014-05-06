@@ -14,7 +14,7 @@ var Gaze       = require('gaze').Gaze;
 var livereload = require('connect-livereload');
 var coffeemw   = require('./lib/coffee-middleware');
 var stylusmw   = require('./lib/stylus-middleware');
-var log        = require('./lib/log')();
+var log        = require('./lib/log');
 
 program
   .version('0.0.1')
@@ -83,4 +83,4 @@ app.use(function(err, req, res, next){
 
 
 app.listen(port);
-log('Serve ' + root + ' on http://localhost:' + port);
+console.log('[devserver] '.grey + 'Serve ' + root.italic + ' on ' + ('http://localhost:' + port).underline);
