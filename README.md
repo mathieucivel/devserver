@@ -15,7 +15,8 @@ No npm package yet
     cd ~/where-i-usually-install-stuff
     git clone https://github.com/mathieucivel/devserver.git
     cd devserver
-    npm link
+    npm install
+    sudo npm link
 
 
 ## Usage
