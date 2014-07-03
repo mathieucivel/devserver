@@ -9,6 +9,7 @@
 var path       = require('path');
 var program    = require('commander');
 var express    = require('express');
+var request    = require('request');
 var tinylr     = require('tiny-lr');
 var Gaze       = require('gaze').Gaze;
 var livereload = require('connect-livereload');
@@ -16,11 +17,16 @@ var coffeemw   = require('./lib/coffee-middleware');
 var stylusmw   = require('./lib/stylus-middleware');
 var log        = require('./lib/log');
 
+var proxylist = function(values) {
+  return values.split(',');
+};
+
 program
   .version('0.0.1')
   .option('-r, --root <path>', 'root directory to serve, default to current directory')
   .option('-p, --port <n>', 'port number, default 8000', parseInt)
   .option('-l, --livereload <n>', 'LiveReload port, default 35729')
+  .option('-P, --proxy <http://domain:port,path1,path2,...>', 'The given list of path will be forwarded to the given url', proxylist)
   .parse(process.argv);
 
 
@@ -45,6 +51,7 @@ gaze.on('ready', function(watcher) {
   log('Started watching files for changes');
 });
 gaze.on('all', function(event, filepath) {
+  log('------------------------------');
   log('Reload ' + filepath);
   lr.changed({
     body : {
@@ -60,10 +67,12 @@ gaze.watched(function(err, files) {
 */
 
 //simple logger
+/* * /
 app.use(function(req, res, next){
   log(req.method + ' ' + req.url);
   next();
 });
+/* */
 
 //livereload
 app.use(livereload({
@@ -85,6 +94,18 @@ app.use(function(err, req, res, next){
   res.send(500, 'Something broke!');
 });
 
+//proxy
+if (program.proxy) {
+  //console.log(program.proxy);
+  target_url = program.proxy.splice(0, 1);
+  for (var i = 0; i < program.proxy.length; i++) {
+    app.get(program.proxy[i], function (req, res) {
+      log("Proxying to " + target_url + req.url, 'yellow');
+      req.pipe(request(target_url + req.url)).pipe(res);
+    });
+
+  }
+}
 
 
 app.listen(port);
