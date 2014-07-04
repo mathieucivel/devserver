@@ -25,6 +25,7 @@ program
   .version('0.0.1')
   .option('-r, --root <path>', 'root directory to serve, default to current directory')
   .option('-p, --port <n>', 'port number, default 8000', parseInt)
+  .option('-d, --domain <domain_or_ip>', 'domain or ip to listen to, default localhost')
   .option('-l, --livereload <n>', 'LiveReload port, default 35729')
   .option('-P, --proxy <http://domain:port,path1,path2,...>', 'The given list of path will be forwarded to the given url', proxylist)
   .parse(process.argv);
@@ -32,6 +33,7 @@ program
 
 port    = program.port || 8000;
 root    = program.root || '';
+domain  = program.domain || 'localhost';
 lr_port = program.livereload || 35729
 root    = path.resolve(process.cwd(), root);
 
@@ -108,5 +110,5 @@ if (program.proxy) {
 }
 
 
-app.listen(port);
-console.log('[devserver] '.grey + 'Serve ' + root.italic + ' on ' + ('http://localhost:' + port).underline);
+app.listen(port, domain);
+console.log('[devserver] '.grey + 'Serve ' + root.italic + ' on ' + ('http://' + domain + ':' + port).underline);
