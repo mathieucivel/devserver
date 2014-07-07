@@ -15,6 +15,7 @@ var Gaze       = require('gaze').Gaze;
 var livereload = require('connect-livereload');
 var coffeemw   = require('./lib/coffee-middleware');
 var stylusmw   = require('./lib/stylus-middleware');
+var lessmw     = require('./lib/less-middleware');
 var log        = require('./lib/log');
 
 var proxylist = function(values) {
@@ -89,6 +90,9 @@ app.use(coffeemw());
 
 //stylus
 app.use(stylusmw());
+
+//less
+app.use(lessmw());
 
 
 //error handler
