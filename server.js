@@ -81,14 +81,15 @@ app.use(livereload({
   port : lr_port
 }));
 
+//static
+app.use(express.static(root));
+
 //coffeescript
 app.use(coffeemw());
 
 //stylus
 app.use(stylusmw());
 
-//static
-app.use(express.static(root));
 
 //error handler
 app.use(function(err, req, res, next){
