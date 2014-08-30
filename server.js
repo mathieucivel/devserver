@@ -107,8 +107,12 @@ if (program.proxy) {
   target_url = program.proxy.splice(0, 1);
   for (var i = 0; i < program.proxy.length; i++) {
     app.get(program.proxy[i], function (req, res) {
-      log("Proxying to " + target_url + req.url, 'yellow');
+      log("Proxying GET to " + target_url + req.url, 'yellow');
       req.pipe(request(target_url + req.url)).pipe(res);
+    });
+    app.post(program.proxy[i], function (req, res) {
+      log("Proxying POST to " + target_url + req.url, 'yellow');
+      req.pipe(request.post(target_url + req.url, {json:req.body})).pipe(res);
     });
 
   }
