@@ -26,6 +26,9 @@ No npm package yet
     cd ~/where-i-do-projects/my-project
     devserver
 
+What it's looks like :
+![Console screenshot](doc/screenshot-console.png?raw=true "Console screenshot")
+
 
 ## Options
 
