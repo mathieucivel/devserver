@@ -1,0 +1,7 @@
+#css {
+  color : green;
+}
+
+#css::before {
+  content: '✔ ';
+}
