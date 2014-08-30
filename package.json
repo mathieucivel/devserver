@@ -23,6 +23,9 @@
     "url": "https://github.com/mathieucivel/devserver/issues"
   },
   "homepage": "https://github.com/mathieucivel/devserver",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
   "dependencies": {
     "gaze": "^0.6.4",
     "colors": "^0.6.2",
