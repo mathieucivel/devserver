@@ -2,7 +2,7 @@
   "name": "devserver",
   "version": "0.0.1",
   "description": "Local web server for quick development. LiveReload coffee & stylus.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,7 @@
     "ExpressJS",
     "CoffeeScript",
     "Stylus",
-    "Jade"
+    "Less"
   ],
   "author": "Mathieu Civel",
   "license": "MIT",
